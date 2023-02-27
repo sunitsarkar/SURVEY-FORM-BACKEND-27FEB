@@ -2,8 +2,13 @@ const mongoose=require('mongoose');
 /*
 work on it..
 */
-const Post=mongoose.Schema({
-    
+const Question=mongoose.Schema({
+    question: String,
+    answer:{
+        one: String,
+        two: String,
+        three: String
+    }
 });
 
-module.exports=mongoose.model("Post" ,Post);
+module.exports=mongoose.model("Question" ,Question);
