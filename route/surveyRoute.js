@@ -14,51 +14,42 @@ router.post('/create', (req, res) => {
 });
 
 
-//to read
-router.get('/survey',  (req, res) => {
-    try {
-        const survey = new UserSurvey.find();
-        res.status(200).json(survey);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
-});
-
-
-//to update
-router.put('/survey/:name/:question',  (req, res) => {
-    const id = req.params.id;
-    const update = req.body;
-    try {
-        const survey = new UserSurvey.findByIdAndUpdate({name: name, question: question});
-        if (!survey) {
-            return res.status(404).json({ message: "Survey not found" });
-        }
-        res.status(200).json(survey);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
-});
-
-
-// to delete
-router.delete('/survey/:name/:question', async (req, res) => {
-    const name = req.params.name;
-    const question = req.params.question;
-    try {
-      const survey = await UserSurvey.findOneAndDelete({ name: name, question: question });
-      if (!survey) {
-        return res.status(404).json({ message: "Survey not found" });
+//to read all surveys to render on login
+router.get('/surveys',  (req, res) => {
+    UserSurvey.find().sort("-createdAt")
+    .exec((err, surveys) => {
+      // error checking
+      if (err || !surveys) {
+        return res.status(400).json({
+          error: "Something went wrong in finding all todos",
+        });
       }
-      res.status(200).json({ message: "Survey deleted successfully" });
-    } catch (err) {
-      res.status(500).json({ message: err.message });
-    }
-  });
+      // return all the todos in json format
+      res.json(surveys);
+    });
+});
+
+
+//not finished******************************************
+router.get('/surveys/:name',(req,res)=>{
+    const name=req.body.name;
+    console.log(name)
+    UserSurvey.find({name:name}).exec((err, surveys) => {
+        // error checking
+        if (err || !surveys) {
+          return res.status(400).json({
+            error: "Something went wrong in finding all todos",
+          });
+        }
+        // return all the todos in json format
+        res.json(surveys);
+      });
+})
+
+//********************************************************* */
+
+
   
 
-/*
-this is to store the user data when one tries to registrer.....soo we need only one methode that is post.
-*/
 
 module.exports = router;

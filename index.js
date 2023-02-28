@@ -22,7 +22,6 @@ mongoose
 app.use(cors());
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
-app.use(cookieParser());
 app.use('/',registrationRouter);
 app.use('/survey',surveyRouter);
 app.use('/survey/question',questionRouter)
