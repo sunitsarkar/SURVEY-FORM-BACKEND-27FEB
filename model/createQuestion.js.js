@@ -4,10 +4,14 @@ work on it..
 */
 const Question=mongoose.Schema({
     question: String,
-    options:[
+    options1:[
         {one: String},
+    ],
+    options2:[
         {two: String},
-        {three: String}
+    ],
+    options3:[
+        {three: String},
     ]
 });
 
