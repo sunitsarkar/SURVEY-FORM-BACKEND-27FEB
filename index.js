@@ -25,7 +25,7 @@ app.use(bodyparser.json());
 app.use(cookieParser());
 app.use('/',registrationRouter);
 app.use('/survey',surveyRouter);
-app.use('/survey/createquestion',questionRouter)
+app.use('/survey/question',questionRouter)
 
 const port = 8000;
 
