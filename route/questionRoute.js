@@ -38,6 +38,7 @@ router.param("question", (req, res, next, question) => {
     });
   });
 
+  //to get single
 router.get('/:question',(req,res)=>{
     res.json(req.question)
 });
