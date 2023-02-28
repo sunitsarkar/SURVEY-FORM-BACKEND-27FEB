@@ -27,9 +27,6 @@ router.param("name", (req, res, next, name) => {
   });
 });
 
-router.get('/mario',(req,resp)=>{
-  resp.send(marioModel.mariochar)
-});
 
 
 //to read all surveys to render on login
