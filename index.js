@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 const registrationRouter=require('./route/route');
 const surveyRouter=require("./route/surveyRoute");
 const questionRouter=require('./route/questionRoute');
-const multer=require('multer');
 const User=require('./model/user')
 
 const app = express();
@@ -21,23 +20,6 @@ mongoose
         console.log("CONNECTED TO DATABASE");
     });
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-app.post( "/", async (req, res) => {
-    const saveData = new User({
-        name: req.body.name,
-        email: req.body.email,
-        phone: req.body.phone,
-        profession: req.body.profession,
-        password: req.body.password,
-        confirmPassword: req.body.confirmPassword
-    });
-    try {
-        await saveData.save();
-        res.send({ message: "user added" });
-    } catch (error) {
-        console.log(error);
-        res.status(500).send({ message: "registration failed" });
-    }
-});
 
 //***************************************************** */
 

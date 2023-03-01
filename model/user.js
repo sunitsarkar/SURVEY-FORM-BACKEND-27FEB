@@ -13,8 +13,8 @@ const User=mongoose.Schema({
     email: String,
     phone: Number,
     profession : String,
-    password: Number,
-    confirmPassword: Number
+    password: String,
+    confirmPassword:String
 
 })
 
