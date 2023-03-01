@@ -4,7 +4,14 @@ const router = express.Router();
 const User = require('../model/user');
 
 router.post('/', (req,res) => {
-    const user=new User(req.body);
+    const user=new User({
+        name: req.body.name,
+        email: req.body.email,
+        phone: req.body.phone,
+        profession: req.body.profession,
+        password: req.body.password,
+        confirmPassword: req.body.confirmPassword
+    });
 
     user.save((err,success)=>{
         res.send({success})
