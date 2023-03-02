@@ -11,7 +11,7 @@ when someonr tries to login we shall compare his credentials with the db and wil
 const User=mongoose.Schema({
     name: String,
     email: String,
-    phone: Number,
+    phone: String,
     profession : String,
     password: String,
     confirmPassword:String
