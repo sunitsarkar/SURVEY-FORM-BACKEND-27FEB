@@ -6,11 +6,12 @@ const UserSurvey = require('../model/userSurvey');
 // to create 
 router.post('/create', (req, res) => {
     const survey = new UserSurvey(req.body);
-
     survey.save((err, success) => {
         res.send({ success })
     })
 });
+
+
 
 router.param("name", (req, res, next, name) => {
   UserSurvey.find({name:name}).exec((err, surveys) => {

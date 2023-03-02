@@ -8,7 +8,7 @@ const questionRouter=require('./route/questionRoute');
 const User=require('./model/user')
 
 const app = express();
-const uri = "mongodb+srv://sunitsarkar:LwP8bgRq3VOKlHWI@cluster0.gxschpx.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb://127.0.0.1:27017";
 
 mongoose.set('strictQuery',false);
 mongoose
@@ -26,7 +26,7 @@ mongoose
 app.use(cors());
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
-// app.use('/',registrationRouter);
+app.use('/',registrationRouter);
 app.use('/survey',surveyRouter);
 app.use('/survey/question',questionRouter)
 
@@ -34,7 +34,7 @@ const port = 8000;
 
 
 app.listen(port, () => {
-    console.log("server is live....")
+    console.log(`server is live on port ${port}`)
 });
 
 
