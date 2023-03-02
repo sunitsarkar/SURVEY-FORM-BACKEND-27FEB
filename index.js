@@ -8,7 +8,7 @@ const questionRouter=require('./route/questionRoute');
 const User=require('./model/user')
 
 const app = express();
-const uri = "mongodb://127.0.0.1:27017";
+const uri = "mongodb+srv://sunitsarkar:LwP8bgRq3VOKlHWI@cluster0.gxschpx.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.set('strictQuery',false);
 mongoose
