@@ -4,7 +4,9 @@ const router = express.Router();
 const User = require('../model/user');
 
 router.post('/', (req,res) => {
+    console.log(req.body);
     const user=new User(req.body);
+
 
     user.save((err,success)=>{
         res.send({success})

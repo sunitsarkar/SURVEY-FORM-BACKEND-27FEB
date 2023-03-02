@@ -19,14 +19,14 @@ mongoose
     .then(() => {
         console.log("CONNECTED TO DATABASE");
     });
-//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 //***************************************************** */
 
 app.use(cors());
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
-// app.use('/',registrationRouter);
+app.use('/',registrationRouter);
 app.use('/survey',surveyRouter);
 app.use('/survey/question',questionRouter)
 
