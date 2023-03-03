@@ -10,7 +10,8 @@ const Survey=mongoose.Schema({
     startDate: String,
     endDate: String,
     otherCriteria: String,
-    image: String
+    image: String,
+    email:String
 });
 
 module.exports=mongoose.model("Survey" ,Survey);

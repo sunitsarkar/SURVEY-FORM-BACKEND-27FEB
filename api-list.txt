@@ -5,7 +5,7 @@ to create:- post- 'domain/'
 -----------------------------------------------------------------------------------
 for survey*******************
 to create:-  post- 'domain/survey/create'
-to read all:- get- 'domain/surveys'
+to read all:- get- 'domain/survey/surveys'
 to search and read one with name param :- get 'domain/survey/surveys/:name'
 to update :- put- 'domain/survey/surveys/:name/update'
 to delete :- delete- 'domain/survey/surveys/:name/delete'
