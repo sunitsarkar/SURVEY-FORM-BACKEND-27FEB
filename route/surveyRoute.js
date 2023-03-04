@@ -29,7 +29,6 @@ router.param("name", (req, res, next, name) => {
 });
 
 
-
 //to read all surveys to render on login
 router.get('/surveys',  (req, res) => {
     UserSurvey.find().sort("-createdAt")
@@ -45,13 +44,13 @@ router.get('/surveys',  (req, res) => {
     });
 });
 
-
 //not finished******************************************
 router.get('/surveys/:name',(req,res)=>{
     res.json(req.survey)
 });
 
 router.delete('/surveys/:name/delete',(req,res)=>{
+  console.log(req)
   const survey=req.survey[0];
   // console.log(survey)
   survey.remove((err, task) => {
