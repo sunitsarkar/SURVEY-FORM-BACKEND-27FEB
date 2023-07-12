@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const UserSurvey = require('../model/userSurvey');
+const auth=require('../middleware/auth');
 
 
 // to create 
-router.post('/create', (req, res) => {
+router.post('/create',auth, (req, res) => {
     const survey = new UserSurvey(req.body);
     survey.save((err, success) => {
         res.send({ success })
@@ -30,8 +31,9 @@ router.param("id", (req, res, next, id) => {
 
 
 //to read all surveys to render on login
-router.get('/surveys',  (req, res) => {
-    UserSurvey.find().sort("-createdAt")
+router.get('/surveys', auth, (req, res) => {
+  const ref=req.query.ref;
+    UserSurvey.find({ref:ref}).sort("-createdAt")
     .exec((err, surveys) => {
       // error checking
       if (err || !surveys) {

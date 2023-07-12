@@ -1,7 +1,8 @@
 const express = require('express');
 
 const router = express.Router();
-const Question = require('../model/createQuestion.js')
+const Question = require('../model/createQuestion.js');
+const auth=require('../middleware/auth');
 
 
 // to create
