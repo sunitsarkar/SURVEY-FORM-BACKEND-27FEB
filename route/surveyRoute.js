@@ -51,22 +51,16 @@ router.get('/surveys/:id',(req,res)=>{
     res.json(req.survey)
 });
 
-router.delete('/surveys/:id/delete',(req,res)=>{
-  console.log(req.survey[0]);
-  const survey=req.survey[0];
-  // console.log(survey)
-  survey.remove((err, task) => {
-    if (err || !task) {
-      return res.status(400).json({
-        error: "something went wrong while deleting the category",
-      });
-    }
-    // send deleted todo and success message as a json response
-    res.json({
-      deleted: survey,
-      message: "survey deleted successfully!",
+//delete
+router.delete('/delete', (req, res) => {
+  const id = req.query.id;
+  UserSurvey.deleteOne({ _id: id })
+    .then(() => {
+      res.status(204).send('deleted');
+    })
+    .catch((error) => {
+      res.status(404).send({ error: "There is no such product id" });
     });
-  })
 });
 
 //a user can only update survey name,description and other crietria
