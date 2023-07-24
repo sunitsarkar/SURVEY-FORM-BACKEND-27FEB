@@ -20,9 +20,6 @@ mongoose
     .then(() => {
         console.log("CONNECTED TO DATABASE");
     });
-//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-
-//***************************************************** */
 
 app.use(cors());
 app.use(bodyparser.urlencoded({ extended: false }));
